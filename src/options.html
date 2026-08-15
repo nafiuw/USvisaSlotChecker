@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USvisaSlotChecker Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="../assets/icon-48.png" alt="USvisaSlotChecker eagle logo">
+        <div>
+          <p class="eyebrow">USvisaSlotChecker</p>
+          <h1>Settings</h1>
+          <p class="lede">Configure monitoring for a portal session that you have already logged into.</p>
+        </div>
+      </div>
+      <div class="header-badge">Manifest V3<br><strong>Local by default</strong></div>
+    </header>
+
+    <div class="notice"><strong>Start after login:</strong> sign in to the portal yourself, remain on the portal tab, then turn monitoring on from the extension popup.</div>
+    <div class="feedback" data-feedback hidden></div>
+
+    <section class="card">
+      <div class="section-heading"><span class="section-number">01</span><div><h2>Portal preferences</h2><p>Choose the appointment workflow and matching consular post.</p></div></div>
+      <div class="grid two">
+        <label class="field"><span>Workflow mode</span><select name="appointmentMode"><option value="new">New appointment</option><option value="reschedule">Reschedule Appointment</option></select><small>Choose the visible dashboard action after login.</small></label>
+        <label class="field"><span>Consular post</span><input name="consularPost" placeholder="e.g., Mumbai or /Mumbai|New Delhi/i" autocomplete="off"><small>Use a plain phrase or a JavaScript-style regular expression.</small></label>
+      </div>
+      <label class="field interval-field"><span>Interval (min)</span><input name="intervalMinutes" type="number" min="1" max="60" step="1" value="5" required><small>Enter a whole-minute interval from 1 through 60. The browser must remain open with the logged-in portal tab available.</small></label>
+    </section>
+
+    <section class="card">
+      <div class="section-heading"><span class="section-number">02</span><div><h2>Alerts and operation</h2><p>The monitor reads the visible logged-in portal page and never stores login credentials.</p></div></div>
+      <label class="toggle-row"><input type="checkbox" name="soundEnabled" checked><span><strong>Enable audible slot alert</strong><small>System notification and visual alert remain available if browser audio is blocked.</small></span></label>
+      <p class="inline-note">The extension does not log in, fill passwords, fill security answers, or submit human-verification controls. It begins monitoring after you are logged in.</p>
+    </section>
+
+    <section class="card card-actions">
+      <div><h2>Save and monitor</h2><p>Saving does not start monitoring. Turn it on from the popup after reviewing the settings.</p></div>
+      <div class="button-row"><button class="primary" data-action="save">Save settings</button><button class="secondary" data-action="portal">Open portal entry page</button></div>
+    </section>
+
+    <section class="card status-card">
+      <div class="section-heading"><span class="section-number">03</span><div><h2>Current status</h2><p data-status-message>Monitoring is off.</p></div></div>
+      <div class="status-grid"><div><span>State</span><strong data-status-chip>Off</strong></div><div><span>Last check</span><strong data-last-checked>Not yet</strong></div><div><span>Last page</span><strong data-last-url>Not yet</strong></div><div><span>Runs</span><strong data-run-count>0</strong></div></div>
+    </section>
+  </main>
+  <script src="ui.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

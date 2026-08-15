@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USvisaSlotChecker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="../assets/icon-48.png" alt="USvisaSlotChecker eagle logo">
+        <div>
+          <p class="eyebrow">LOCAL BROWSER ASSISTANT</p>
+          <h1>USvisaSlotChecker</h1>
+          <p class="subhead">Monitor a logged-in portal tab and get notified when a matching appointment appears.</p>
+        </div>
+      </div>
+      <label class="switch" title="Turn monitoring on or off">
+        <input type="checkbox" data-monitor-toggle aria-label="Turn monitoring on or off">
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <section class="status-card">
+      <div class="status-row">
+        <span class="status-chip" data-status-chip data-state="disabled">Off</span>
+        <span class="small-label">Checks <strong data-run-count>0</strong></span>
+      </div>
+      <p class="status-message" data-status-message>Monitoring is off.</p>
+      <div class="status-meta">
+        <span>Last check <strong data-last-checked>Not yet</strong></span>
+        <span>Workflow <strong data-workflow-mode>New appointment</strong></span>
+      </div>
+    </section>
+
+    <div class="feedback" data-feedback hidden></div>
+
+    <section class="quick-settings">
+      <div class="field-grid">
+        <label class="field">
+          <span>Workflow</span>
+          <select name="appointmentMode">
+            <option value="new" selected>New appointment</option>
+            <option value="reschedule">Reschedule Appointment</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Consular post</span>
+          <input name="consularPost" placeholder="e.g., Mumbai" autocomplete="off">
+        </label>
+      </div>
+      <label class="field interval-field">
+        <span>Interval (min)</span>
+        <input name="intervalMinutes" type="number" min="1" max="60" step="1" value="5" required>
+      </label>
+      <label class="check-row"><input type="checkbox" name="soundEnabled" checked> Use an audible alert when a slot is detected</label>
+      <p class="hint">Enter a whole-minute interval from 1 to 60. Log in to the portal yourself before turning monitoring on.</p>
+      <div class="button-row">
+        <button class="primary" data-action="save">Save settings</button>
+        <button class="secondary" data-action="manual">Check now</button>
+      </div>
+    </section>
+
+    <section class="action-row">
+      <button class="quiet" data-action="portal">Open portal entry page</button>
+      <button class="quiet" data-action="silence" hidden>Silence alert</button>
+      <button class="quiet danger" data-action="reset" hidden>Clear slot result</button>
+    </section>
+
+    <footer class="footer-row">
+      <span>Mode <strong data-workflow-mode>New appointment</strong></span>
+      <button class="link-button" data-action="options">Settings</button>
+    </footer>
+  </main>
+  <script src="ui.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
